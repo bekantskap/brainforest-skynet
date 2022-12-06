@@ -13,7 +13,7 @@ export default function Home() {
         <meta name="description" content="Brainforest intranät" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="w-screen h-[80vh] flex justify-center">
+      <main className="w-screen h-[90vh] flex justify-center">
         <section className="grid grid-cols-4 gap-4 m-4">
           <Case />
           <Case />

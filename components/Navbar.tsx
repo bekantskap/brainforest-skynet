@@ -96,7 +96,7 @@ const Navbar = () => {
           )}
         </div>
         <div
-          className={`md:hidden absolute top-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-accentcolor text-center ease-in duration-300 ${
+          className={`md:hidden absolute top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen bg-accentcolor text-center ease-in duration-300 ${
             modal ? " left-0 " : "left-[-100%]"
           }`}
         >
@@ -105,27 +105,33 @@ const Navbar = () => {
               onClick={handleModal}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/">Lorem</Link>
+              <Link href="/">DESIGN</Link>
             </li>
             <li
               onClick={handleModal}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/#gallery">Lorem</Link>
+              <Link href="/#gallery">UTVECKLING</Link>
             </li>
             <li
               onClick={handleModal}
               className="p-4 text-4xl hover:text-gray-500"
             >
-              <Link href="/work">Lorem</Link>
-            </li>
-            <li
-              onClick={handleModal}
-              className="p-4 text-4xl hover:text-gray-500"
-            >
-              <Link href="/contact">Lorem</Link>
+              <Link href="/work">MANUALER</Link>
             </li>
           </ul>
+          <div className="flex items-center">
+            <div className="">LOGGA UT</div>
+            <div className="">ADMIN</div>
+          </div>
+          <form className="flex relative items-center w-40">
+            <AiOutlineSearch className="text-xl absolute ml-[6px]" />
+
+            <input
+              type="text"
+              className="cursor-pointer z-10 h-8 w-8 relative rounded-full border bg-transparent outline-none focus:w-full focus:cursor-text focus:pl-8 focus:pr-4 transition-width ease-in-out duration-700"
+            ></input>
+          </form>
         </div>
       </nav>
     </>
