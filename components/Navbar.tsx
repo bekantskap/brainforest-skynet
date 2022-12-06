@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="w-screen h-[80px] bg-primarycolor flex items-center justify-between">
+      <nav className="w-screen h-[80px] bg-primarycolor flex items-center justify-between mb-6">
         <section className=" hidden md:w-[550px] relative md:flex  justify-evenly items-center">
           <Link href="/">
             <h2 className="text-4xl font-bold">b</h2>
@@ -80,7 +80,7 @@ const Navbar = () => {
           onClick={handleModal}
           className="z-10 w-full flex justify-between items-center md:hidden"
         >
-          <h2 className="text-4xl ml-8">b</h2>
+          <h2 className="text-4xl ml-8 font-bold">b</h2>
           {modal ? (
             <AiOutlineClose
               size={30}
