@@ -4,6 +4,11 @@
 
 @layer base {
   body {
-    @apply p-0 m-0;
+    @apply p-0 m-0 text-textcolor bg-white;
+  }
+}
+@layer components {
+  .header-link {
+    @apply text-base;
   }
 }
