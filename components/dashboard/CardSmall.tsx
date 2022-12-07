@@ -1,8 +1,8 @@
 import React from "react";
 
-const DashboardCard = () => {
+const CardSmall = () => {
   return (
-    <section className=" bg-primarycolor col-span-1  2xl:w-[321px] h-[440px]">
+    <section className=" bg-primarycolor col-span-4 sm:col-span-2 lg:col-span-1  2xl:w-[321px] h-[440px]">
       <h2 className="text-xl m-2">Title</h2>
       <article className="m-4">
         <p className="text-md">
@@ -13,7 +13,7 @@ const DashboardCard = () => {
       <div className="h-[1px] w-[90%] m-auto bg-textcolor"></div>
       <article className="m-4">
         <p className="text-md">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Lorem ipsum dolor sit amet elit, consectetur adipiscing .
         </p>
         <p className="text-xs">December 2022</p>
       </article>
@@ -28,4 +28,4 @@ const DashboardCard = () => {
   );
 };
 
-export default DashboardCard;
+export default CardSmall;
