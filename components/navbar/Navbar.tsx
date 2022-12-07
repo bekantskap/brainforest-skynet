@@ -9,13 +9,21 @@ import SubNav from "./SubNav";
 const Navbar = () => {
   const [activeSubNav, setActiveSubNav] = useState("");
   const dispatch = useDispatch();
+  const stateHandler = useSelector((state: any) => state.navState);
 
   const handleSubNav = (content: string) => {
-    if (activeSubNav === content || content === "close") {
-      dispatch(setSubNav(false));
-      setActiveSubNav("");
+    if (stateHandler.navDir === content) {
+      const newObj = {
+        subNav: false,
+        navDir: "",
+      };
+      dispatch(setSubNav(newObj));
     } else {
-      dispatch(setSubNav(true));
+      const newObj = {
+        subNav: true,
+        navDir: content,
+      };
+      dispatch(setSubNav(newObj));
       setActiveSubNav(content);
     }
   };

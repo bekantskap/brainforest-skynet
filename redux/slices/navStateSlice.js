@@ -1,11 +1,12 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 export const navStateSlice = createSlice({
   name: "navState",
-  initialState: false,
+  initialState: { subNav: false, navDir: "" },
   reducers: {
     setSubNav: (state, action) => {
-      return (state = action.payload);
+      state.subNav = action.payload.subNav;
+      state.navDir = action.payload.navDir;
     },
   },
 });
