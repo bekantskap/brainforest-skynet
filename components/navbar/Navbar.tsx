@@ -1,30 +1,27 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import { useSelector, useDispatch } from "react-redux";
-import { setSubNav } from "../../redux/slices/navStateSlice";
+import { SiteContext } from "../../pages/_app";
+import { NavContextType } from "../../typing";
 import MobileNav from "./MobileNav";
 import SubNav from "./SubNav";
 
 const Navbar = () => {
-  const [activeSubNav, setActiveSubNav] = useState("");
-  const dispatch = useDispatch();
-  const stateHandler = useSelector((state: any) => state.navState);
+  const context = useContext(SiteContext) as NavContextType;
 
   const handleSubNav = (content: string) => {
-    if (stateHandler.navDir === content) {
+    if (context.subNav.navdir === content) {
       const newObj = {
-        subNav: false,
-        navDir: "",
+        subnav: false,
+        navdir: "",
       };
-      dispatch(setSubNav(newObj));
+      context.setSubNav(newObj);
     } else {
       const newObj = {
-        subNav: true,
-        navDir: content,
+        subnav: true,
+        navdir: content,
       };
-      dispatch(setSubNav(newObj));
-      setActiveSubNav(content);
+      context.setSubNav(newObj);
     }
   };
 

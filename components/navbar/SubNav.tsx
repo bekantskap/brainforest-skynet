@@ -1,7 +1,7 @@
 import Link from "next/link";
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import navState, { setSubNav } from "../../redux/slices/navStateSlice";
+import React, { useContext } from "react";
+import { SiteContext } from "../../pages/_app";
+import { NavContextType } from "../../typing";
 
 // const navOptions = [
 //   {
@@ -36,22 +36,21 @@ import navState, { setSubNav } from "../../redux/slices/navStateSlice";
 // ];
 
 const SubNav = () => {
-  const stateHandler = useSelector((state: any) => state.navState);
-  const searchParam = stateHandler.navDir;
-  const dispatch = useDispatch();
+  const context = useContext(SiteContext) as NavContextType;
 
   const handleNav = () => {
     const newObj = {
-      subNav: false,
-      navDir: "",
+      subnav: false,
+      navdir: "",
     };
-    dispatch(setSubNav(newObj));
+    // dispatch(setSubNav(newObj));
+    context.setSubNav(newObj);
   };
 
   return (
     <div
       className={`absolute top-20 bg-textcolor w-0  lg:w-full h-10  ${
-        stateHandler.subNav ? "" : "hidden"
+        context.subNav.subnav ? "" : "hidden"
       }`}
     >
       <ul className="hidden text-primarycolor lg:h-full lg:flex items-center justify-around ">
