@@ -9,6 +9,6 @@
 }
 @layer components {
   .header-link {
-    @apply text-base;
+    @apply text-base cursor-pointer;
   }
 }

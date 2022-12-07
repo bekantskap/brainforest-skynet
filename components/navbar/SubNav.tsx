@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { useSelector } from "react-redux";
 import navState from "../../redux/slices/navStateSlice";
@@ -44,11 +45,18 @@ const SubNav = () => {
       }`}
     >
       <ul className="hidden text-primarycolor lg:h-full lg:flex items-center justify-around ">
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
-        <li>Lorem</li>
+        <Link href="/posts">
+          <li>Lorem</li>
+        </Link>
+        <Link href="/posts">
+          <li>Lorem</li>
+        </Link>
+        <Link href="/posts">
+          <li>Lorem</li>
+        </Link>
+        <Link href="/posts">
+          <li>Lorem</li>
+        </Link>
       </ul>
     </div>
   );

@@ -36,19 +36,19 @@ const Navbar = () => {
             <h2 className="text-4xl font-bold">b</h2>
           </Link>
           <div>
-            <Link href="" onClick={() => handleSubNav("design")}>
-              <h3 className="header-link">DESIGN</h3>
-            </Link>
+            <h3 onClick={() => handleSubNav("design")} className="header-link">
+              DESIGN
+            </h3>
           </div>
           <div>
-            <Link href="/posts" onClick={() => handleSubNav("dev")}>
-              <h3 className="header-link">UTVECKLING</h3>
-            </Link>
+            <h3 onClick={() => handleSubNav("dev")} className="header-link">
+              UTVECKLING
+            </h3>
           </div>
           <div>
-            <Link href="/posts" onClick={() => handleSubNav("manuals")}>
-              <h3 className="header-link">MANUALER</h3>
-            </Link>
+            <h3 onClick={() => handleSubNav("manuals")} className="header-link">
+              MANUALER
+            </h3>
           </div>
         </section>
         <SubNav />
