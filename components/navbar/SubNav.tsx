@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { useSelector } from "react-redux";
-import navState from "../../redux/slices/navStateSlice";
+import { useSelector, useDispatch } from "react-redux";
+import navState, { setSubNav } from "../../redux/slices/navStateSlice";
 
 // const navOptions = [
 //   {
@@ -38,6 +38,16 @@ import navState from "../../redux/slices/navStateSlice";
 const SubNav = () => {
   const stateHandler = useSelector((state: any) => state.navState);
   const searchParam = stateHandler.navDir;
+  const dispatch = useDispatch();
+
+  const handleNav = () => {
+    const newObj = {
+      subNav: false,
+      navDir: "",
+    };
+    dispatch(setSubNav(newObj));
+  };
+
   return (
     <div
       className={`absolute top-20 bg-textcolor w-0  lg:w-full h-10  ${
@@ -45,16 +55,16 @@ const SubNav = () => {
       }`}
     >
       <ul className="hidden text-primarycolor lg:h-full lg:flex items-center justify-around ">
-        <Link href="/posts">
+        <Link onClick={handleNav} href="/posts">
           <li>Lorem</li>
         </Link>
-        <Link href="/posts">
+        <Link onClick={handleNav} href="/posts">
           <li>Lorem</li>
         </Link>
-        <Link href="/posts">
+        <Link onClick={handleNav} href="/posts">
           <li>Lorem</li>
         </Link>
-        <Link href="/posts">
+        <Link onClick={handleNav} href="/posts">
           <li>Lorem</li>
         </Link>
       </ul>
