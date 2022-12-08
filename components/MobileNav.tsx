@@ -1,6 +1,6 @@
-import Link from "next/link";
-import React, { useState } from "react";
-import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import Link from 'next/link';
+import React, { useState } from 'react';
+import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
 const MobileNav = () => {
   const [modal, setModal] = useState(false);
@@ -8,8 +8,9 @@ const MobileNav = () => {
     setModal(!modal);
   };
   return (
+    // FIXA NAVBAREN SÅ ATT DET INTE GÅR ATT SCROLLA NÄR DEN ÄR AKTIV
     <>
-      <div className="z-10 w-full fixed flex justify-between items-center lg:hidden">
+      <div className="z-10 w-full  flex justify-between items-center lg:hidden">
         <h2 className="text-4xl ml-8 font-bold">b</h2>
         {modal ? (
           <AiOutlineClose
@@ -27,7 +28,7 @@ const MobileNav = () => {
       </div>
       <div
         className={`lg:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen  bg-accentcolor text-center ease-in duration-300 ${
-          modal ? " left-0" : "left-[-100%]"
+          modal ? ' left-0' : 'left-[-100%]'
         }`}
       >
         <ul>

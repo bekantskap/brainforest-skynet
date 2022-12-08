@@ -1,11 +1,12 @@
-import React from "react";
-import CardArticle from "../../components/posts/CardArticle";
+import React from 'react';
+import CardArticle from '../../components/CardArticle';
+import Layout from '../../layouts/Layout';
 
 const Posts = () => {
   return (
-    <main className="w-screen min-h-fit">
-      <h2 className="p-4 ml-16 text-2xl">Header</h2>
-      <div className="flex flex-col items-center">
+    <>
+      <div>
+        <h2 className="p-4 text-2xl">Header</h2>
         <section className="grid grid-cols-12 gap-4">
           <CardArticle />
           <CardArticle />
@@ -25,8 +26,10 @@ const Posts = () => {
           <CardArticle />
         </section>
       </div>
-    </main>
+    </>
   );
 };
 
 export default Posts;
+
+Posts.Layout = Layout;

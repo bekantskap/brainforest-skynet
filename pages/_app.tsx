@@ -1,9 +1,8 @@
-import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import Navbar from "../components/navbar/Navbar";
-import { createContext, useState } from "react";
-import { INavState, NavContextType } from "../typing";
-import React from "react";
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import { createContext, useState } from 'react';
+import { INavState, NavContextType } from '../typing';
+import React from 'react';
 
 type SubNavType = {
   subNav: string | null;
@@ -15,7 +14,7 @@ export const SiteContext = createContext<NavContextType | null>(null);
 export default function App({ Component, pageProps }: AppProps) {
   const [subNav, setSubNav] = useState<INavState>({
     subnav: false,
-    navdir: "",
+    navdir: '',
   });
 
   const providerValue = React.useMemo(
@@ -26,12 +25,17 @@ export default function App({ Component, pageProps }: AppProps) {
     [subNav, setSubNav]
   );
 
+  const Layout = Component.Layout || EmptyLayout;
+
   return (
     <>
       <SiteContext.Provider value={providerValue}>
-        <Navbar />
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SiteContext.Provider>
     </>
   );
 }
+
+const EmptyLayout = ({ children }: any) => <>{children}</>;

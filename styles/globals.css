@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply p-0 m-0 text-textcolor bg-white;
+    @apply p-0 m-0 text-textcolor bg-white overflow-y-hidden;
   }
 }
 @layer components {

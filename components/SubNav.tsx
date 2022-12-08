@@ -1,7 +1,7 @@
-import Link from "next/link";
-import React, { useContext } from "react";
-import { SiteContext } from "../../pages/_app";
-import { NavContextType } from "../../typing";
+import Link from 'next/link';
+import React, { useContext } from 'react';
+import { SiteContext } from '../pages/_app';
+import { NavContextType } from '../typing';
 
 // const navOptions = [
 //   {
@@ -41,7 +41,7 @@ const SubNav = () => {
   const handleNav = () => {
     const newObj = {
       subnav: false,
-      navdir: "",
+      navdir: '',
     };
     // dispatch(setSubNav(newObj));
     context.setSubNav(newObj);
@@ -50,7 +50,7 @@ const SubNav = () => {
   return (
     <div
       className={`absolute top-20 bg-textcolor w-0  lg:w-full h-10  ${
-        context.subNav.subnav ? "" : "hidden"
+        context.subNav.subnav ? '' : 'hidden'
       }`}
     >
       <ul className="hidden text-primarycolor lg:h-full lg:flex items-center justify-around ">

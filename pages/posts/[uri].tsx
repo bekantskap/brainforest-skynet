@@ -1,10 +1,11 @@
-import Image from "next/image";
-import React from "react";
+import Image from 'next/image';
+import React from 'react';
+import Layout from '../../layouts/Layout';
 
 const Post = () => {
   return (
-    <main className="w-screen min-h-[90vh] flex justify-evenly items-center">
-      <article className="w-[595px] h-[842px] p-6 bg-primarycolor">
+    <div className="grid grid-cols-12 gap-4">
+      <article className="w-[595px]  h-[842px] col-span-6 bg-primarycolor">
         <div>
           <div className="mb-4">
             <h2 className="text-xl font-semibold">Titel lorem ipsum</h2>
@@ -26,7 +27,7 @@ const Post = () => {
           </p>
           <Image
             src={
-              "https://images.unsplash.com/photo-1670139018135-6711b8932acf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+              'https://images.unsplash.com/photo-1670139018135-6711b8932acf?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80'
             }
             width={500}
             height={500}
@@ -48,7 +49,7 @@ const Post = () => {
           </p>
         </div>
       </article>
-      <section className="w-[295px] h-[842px]  bg-primarycolor">
+      <section className="w-[295px] h-[842px] col-span-6  bg-primarycolor">
         <form className="flex flex-col items-end">
           <textarea className="w-full h-40 resize-none focus:outline-accentcolor"></textarea>
           <button className="h-10 w-14 bg-accentcolor text-white text-sm hover:text-textcolor hover:border-accentcolor hover:bg-primarycolor hover:border">
@@ -56,7 +57,7 @@ const Post = () => {
           </button>
         </form>
       </section>
-    </main>
+    </div>
   );
 };
 
@@ -75,3 +76,5 @@ export async function getStaticProps({ params }: any) {
     props: {},
   };
 }
+
+Post.Layout = Layout;
