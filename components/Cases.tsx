@@ -1,9 +1,9 @@
 import React from "react";
 
-const CardBig = () => {
+const Cases = () => {
   return (
-    <section className="bg-primarycolor w-6/6  h-[420px] col-span-4 lg:col-span-2 2xl:w-[660px]"></section>
+    <section className="bg-primarycolor h-[420px] col-span-12 lg:col-span-6 2xl:w-[660px]"></section>
   );
 };
 
-export default CardBig;
+export default Cases;

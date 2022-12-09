@@ -1,11 +1,15 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import Image from "next/image";
+import React, { useContext } from "react";
+import Navbar from "../components/Navbar";
+import { SiteContext } from "../pages/_app";
 
 const Layout = ({ children }) => {
+  const context = useContext(SiteContext);
+
   return (
     <>
       <Navbar />
-      <main className="w-screen h-fit lg:min-h-[90vh] flex flex-col items-center">
+      <main className={`w-screen h-fit flex flex-col items-center`}>
         {children}
       </main>
       ;

@@ -1,19 +1,19 @@
-import Link from 'next/link';
-import React, { useContext, useState } from 'react';
-import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { SiteContext } from '../pages/_app';
-import { NavContextType } from '../typing';
-import MobileNav from './MobileNav';
-import SubNav from './SubNav';
+import Link from "next/link";
+import React, { useContext, useState } from "react";
+import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { SiteContext } from "../pages/_app";
+import { NavContextType } from "../typing";
+import MobileNav from "./MobileNav";
+import SubNav from "./SubNav";
 
 const Navbar = () => {
-  const context = useContext(SiteContext) as NavContextType;
+  const context = useContext(SiteContext) as any;
 
   const handleSubNav = (content: string) => {
-    if (context.subNav.navdir === content || content === 'close') {
+    if (context.subNav.navdir === content || content === "close") {
       const newObj = {
         subnav: false,
-        navdir: '',
+        navdir: "",
       };
       context.setSubNav(newObj);
     } else {
@@ -29,21 +29,21 @@ const Navbar = () => {
     <>
       <nav className="w-screen h-[80px] bg-primarycolor flex items-center justify-between mb-4 sm:mb-0">
         <section className=" hidden lg:w-[550px] relative lg:flex  justify-evenly items-center">
-          <Link onClick={() => handleSubNav('close')} href="/dashboard">
+          <Link onClick={() => handleSubNav("close")} href="/dashboard">
             <h2 className="text-4xl font-bold">b</h2>
           </Link>
           <div>
-            <h3 onClick={() => handleSubNav('design')} className="header-link">
+            <h3 onClick={() => handleSubNav("design")} className="header-link">
               DESIGN
             </h3>
           </div>
           <div>
-            <h3 onClick={() => handleSubNav('dev')} className="header-link">
+            <h3 onClick={() => handleSubNav("dev")} className="header-link">
               UTVECKLING
             </h3>
           </div>
           <div>
-            <h3 onClick={() => handleSubNav('manuals')} className="header-link">
+            <h3 onClick={() => handleSubNav("manuals")} className="header-link">
               MANUALER
             </h3>
           </div>

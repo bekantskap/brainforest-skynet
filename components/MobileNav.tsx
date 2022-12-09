@@ -1,18 +1,23 @@
-import Link from 'next/link';
-import React, { useState } from 'react';
-import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import Link from "next/link";
+import React, { useContext, useState } from "react";
+import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import { SiteContext } from "../pages/_app";
 
 const MobileNav = () => {
-  const [modal, setModal] = useState(false);
+  const context = useContext(SiteContext) as any;
+
+  // const [modal, setModal] = useState(false);
   const handleModal = () => {
-    setModal(!modal);
+    context.setModal(!context.modal);
   };
   return (
     // FIXA NAVBAREN SÅ ATT DET INTE GÅR ATT SCROLLA NÄR DEN ÄR AKTIV
     <>
       <div className="z-10 w-full  flex justify-between items-center lg:hidden">
-        <h2 className="text-4xl ml-8 font-bold">b</h2>
-        {modal ? (
+        <Link href="/dashboard">
+          <h2 className="text-4xl ml-8 font-bold">b</h2>
+        </Link>
+        {context.modal ? (
           <AiOutlineClose
             size={30}
             onClick={handleModal}
@@ -27,8 +32,8 @@ const MobileNav = () => {
         )}
       </div>
       <div
-        className={`lg:hidden fixed top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen  bg-accentcolor text-center ease-in duration-300 ${
-          modal ? ' left-0' : 'left-[-100%]'
+        className={`lg:hidden absolute top-0 right-0 bottom-0 flex flex-col justify-center items-center w-full h-screen  bg-accentcolor text-center ease-in duration-300 ${
+          context.modal ? " left-0 overflow-hidden" : "left-[-100%]"
         }`}
       >
         <ul>

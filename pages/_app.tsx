@@ -1,28 +1,33 @@
-import '../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { createContext, useState } from 'react';
-import { INavState, NavContextType } from '../typing';
-import React from 'react';
+import "../styles/globals.css";
+import type { AppProps } from "next/app";
+import { createContext, useState } from "react";
+import {
+  IModalState,
+  INavState,
+  ModalContextType,
+  NavContextType,
+} from "../typing";
+import React from "react";
 
-type SubNavType = {
-  subNav: string | null;
-  setSubNav: React.Dispatch<React.SetStateAction<string | null>>;
-};
-
-export const SiteContext = createContext<NavContextType | null>(null);
+export const SubNavContext = createContext<NavContextType | null>(null);
+export const SiteContext = createContext<any>(null);
 
 export default function App({ Component, pageProps }: AppProps) {
   const [subNav, setSubNav] = useState<INavState>({
     subnav: false,
-    navdir: '',
+    navdir: "",
   });
+
+  const [modal, setModal] = useState<IModalState>();
 
   const providerValue = React.useMemo(
     () => ({
       subNav,
       setSubNav,
+      modal,
+      setModal,
     }),
-    [subNav, setSubNav]
+    [subNav, setSubNav, modal, setModal]
   );
 
   const Layout = Component.Layout || EmptyLayout;
