@@ -6,10 +6,12 @@ import Events from "../components/Events";
 import Stats from "../components/Stats";
 import Link from "next/link";
 import Layout from "../layouts/Layout";
+import SideNavbar from "../components/SideNavbar";
 
 export default function Home() {
   return (
     <>
+      <SideNavbar />
       <Head>
         <title>Brainforest intranät</title>
         <meta name="description" content="Brainforest intranät" />
@@ -24,5 +26,3 @@ export default function Home() {
     </>
   );
 }
-
-Home.Layout = Layout;
