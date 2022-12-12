@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Navbar from "../components/Navbar";
 import { SiteContext } from "../pages/_app";
 
-const Layout = ({ children }) => {
+const Layout = ({ children }: React.PropsWithChildren<{}>) => {
   const context = useContext(SiteContext);
 
   return (

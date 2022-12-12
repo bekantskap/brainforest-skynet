@@ -8,11 +8,13 @@ import {
   NavContextType,
 } from "../typing";
 import React from "react";
+import type { ReactElement, ReactNode } from "react";
+import type { NextPage } from "next";
 
 export const SubNavContext = createContext<NavContextType | null>(null);
 export const SiteContext = createContext<any>(null);
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [subNav, setSubNav] = useState<INavState>({
     subnav: false,
     navdir: "",
@@ -30,17 +32,18 @@ export default function App({ Component, pageProps }: AppProps) {
     [subNav, setSubNav, modal, setModal]
   );
 
-  const Layout = Component.Layout || EmptyLayout;
+  const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <>
-      <SiteContext.Provider value={providerValue}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </SiteContext.Provider>
-    </>
+    <SiteContext.Provider value={providerValue}>
+      {getLayout(<Component {...pageProps} />)}
+    </SiteContext.Provider>
   );
 }
 
-const EmptyLayout = ({ children }: any) => <>{children}</>;
+export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  getLayout?: (page: ReactElement) => ReactNode;
+};
+type AppPropsWithLayout = AppProps & {
+  Component: NextPageWithLayout;
+};

@@ -8,7 +8,7 @@ const Stats = () => {
         <div className="relative flex items-center justify-center col-span-2">
           <svg viewBox="0 0 36 36">
             <path
-              className="circle fill-none stroke-[2.8px] stroke-[#0F7173]"
+              className="circle fill-none stroke-[2.8px] stroke-[#5C7457]"
               d="M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
       a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -23,7 +23,7 @@ const Stats = () => {
         <div className="relative flex items-center justify-center col-span-2 ">
           <svg viewBox="0 0 36 36">
             <path
-              className="circle fill-none stroke-[2.8px] stroke-[#F05D5E]"
+              className="circle fill-none stroke-[2.8px] stroke-[#5C7457]"
               d="M18 2.0845
       a 15.9155 15.9155 0 0 1 0 31.831
       a 15.9155 15.9155 0 0 1 0 -31.831"
@@ -35,7 +35,36 @@ const Stats = () => {
           </svg>
           <p className="absolute text-xl">90%</p>
         </div>
-        <div></div>
+        <div className="relative flex items-center justify-center col-span-2">
+          <svg viewBox="0 0 36 36">
+            <path
+              className="circle fill-none stroke-[2.8px] stroke-[#5C7457]"
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+              fill="none"
+              stroke="#444"
+              stroke-width="1"
+              strokeDasharray="74,100"
+            />
+          </svg>
+          <p className="absolute text-xl">74%</p>
+        </div>
+        <div className="relative flex items-center justify-center col-span-2 ">
+          <svg viewBox="0 0 36 36">
+            <path
+              className="circle fill-none stroke-[2.8px] stroke-[#5C7457]"
+              d="M18 2.0845
+      a 15.9155 15.9155 0 0 1 0 31.831
+      a 15.9155 15.9155 0 0 1 0 -31.831"
+              fill="none"
+              stroke="#444"
+              stroke-width="1"
+              strokeDasharray="100,100"
+            />
+          </svg>
+          <p className="absolute text-xl">100%</p>
+        </div>
       </div>
     </section>
   );

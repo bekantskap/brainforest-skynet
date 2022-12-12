@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import Head from "next/head";
 import CardDouble from "../components/CardDouble";
 import Cases from "../components/Cases";
@@ -6,8 +6,9 @@ import CardSmall from "../components/CardSmall";
 import Events from "../components/Events";
 import Stats from "../components/Stats";
 import Layout from "../layouts/Layout";
+import type { NextPageWithLayout } from "./_app";
 
-const Dashboard = () => {
+const Dashboard: NextPageWithLayout = () => {
   return (
     <>
       <Head>
@@ -27,6 +28,8 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+Dashboard.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
 
-Dashboard.Layout = Layout;
+export default Dashboard;

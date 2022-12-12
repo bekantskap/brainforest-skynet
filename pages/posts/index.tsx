@@ -1,8 +1,9 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import CardArticle from "../../components/CardArticle";
 import Layout from "../../layouts/Layout";
+import { NextPageWithLayout } from "../_app";
 
-const Posts = () => {
+const Posts: NextPageWithLayout = () => {
   return (
     <div>
       <h2 className="pt-2 pb-2 text-2xl">Header</h2>
@@ -30,4 +31,6 @@ const Posts = () => {
 
 export default Posts;
 
-Posts.Layout = Layout;
+Posts.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>;
+};
