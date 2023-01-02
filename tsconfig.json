@@ -19,6 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "**/*.js",
     "pages/_app.js",
     "layouts/Layout.tsx"
   ],

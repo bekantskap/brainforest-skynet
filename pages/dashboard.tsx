@@ -7,8 +7,12 @@ import Events from "../components/Events";
 import Stats from "../components/Stats";
 import Layout from "../layouts/Layout";
 import type { NextPageWithLayout } from "./_app";
+import client from "../lib/client";
+import { gql } from "@apollo/client";
 
-const Dashboard: NextPageWithLayout = () => {
+const Dashboard: NextPageWithLayout = ({ posts }: any) => {
+  console.log(posts);
+
   return (
     <>
       <Head>
@@ -19,8 +23,8 @@ const Dashboard: NextPageWithLayout = () => {
       <section className="grid grid-cols-12 gap-4 m-4">
         <Cases />
         <Events />
-        <CardSmall />
-        <CardSmall />
+        <CardSmall posts={posts} />
+        <CardSmall posts={posts} />
         <Stats />
         <CardDouble />
       </section>
@@ -33,3 +37,28 @@ Dashboard.getLayout = function getLayout(page: ReactElement) {
 };
 
 export default Dashboard;
+
+const GET_POSTS = gql`
+  query NewQuery {
+    posts(first: 4, after: null) {
+      nodes {
+        databaseId
+        uri
+        title
+        date
+      }
+    }
+  }
+`;
+
+export async function getStaticProps() {
+  const res = await client.query({
+    query: GET_POSTS,
+  });
+
+  return {
+    props: {
+      posts: res.data.posts.nodes,
+    },
+  };
+}

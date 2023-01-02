@@ -3,7 +3,6 @@ import React, { ReactElement } from "react";
 import CardArticle from "../../components/CardArticle";
 import Layout from "../../layouts/Layout";
 import { NextPageWithLayout } from "../_app";
-import { getAllPosts } from "../../lib/api";
 
 const Posts: NextPageWithLayout = ({ allPosts }: any) => {
   return (
@@ -31,9 +30,9 @@ const Posts: NextPageWithLayout = ({ allPosts }: any) => {
         <CardArticle />
         <CardArticle />
         <CardArticle /> */}
-        {allPosts.edges.map((post: any, key: number) => {
+        {/* {allPosts.edges.map((post: any, key: number) => {
           return <CardArticle props={post} key={key} />;
-        })}
+        })} */}
       </section>
     </div>
   );
@@ -46,11 +45,11 @@ Posts.getLayout = function getLayout(page: ReactElement) {
 };
 
 export async function getStaticProps() {
-  const allPosts = await getAllPosts();
+  // const allPosts = await getAllPosts();
 
   return {
     props: {
-      allPosts,
+      // allPosts,
     },
   };
 }

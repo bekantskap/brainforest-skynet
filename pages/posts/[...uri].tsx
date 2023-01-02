@@ -1,10 +1,16 @@
+import { gql } from "@apollo/client";
 import Head from "next/head";
 import Image from "next/image";
 import React, { ReactElement } from "react";
+import Block, { BLOCKS_FIELD } from "../../components/Block";
 import Layout from "../../layouts/Layout";
+import client from "../../lib/client";
 import { NextPageWithLayout } from "../_app";
 
-const Post: NextPageWithLayout = () => {
+const Post: NextPageWithLayout = ({ post }: any) => {
+  const { title, blocks } = post;
+  console.log(blocks);
+
   return (
     <>
       <Head>
@@ -17,13 +23,20 @@ const Post: NextPageWithLayout = () => {
         <article className="w-[595px] min-h-[842px] p-4 col-span-12 lg:col-span-8 bg-primarycolor">
           <div>
             <div className="mb-2">
-              <h2 className="text-xl font-semibold">Titel lorem ipsum</h2>
+              <h2 className="text-xl font-semibold">{title}</h2>
               <div className="ml-2 mr-2 flex justify-between">
                 <p className="text-xs ">12-22-2022</p>
                 <p className="text-xs">Author Authorsson</p>
               </div>
             </div>
-            <p className="text-sm p-4">
+
+            {blocks
+              ? blocks.map((block: any, index: number) => (
+                  <Block block={block} key={index} />
+                ))
+              : null}
+
+            {/* <p className="text-sm p-4">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
               bibendum porta ornare. Duis elementum tincidunt sapien, quis
               sollicitudin ipsum dignissim a. Proin scelerisque metus sed lorem
@@ -59,7 +72,7 @@ const Post: NextPageWithLayout = () => {
               odio, cursus eu suscipit eget, consequat elementum est. Donec quis
               sapien enim. Sed nec sem accumsan, accumsan ipsum a, bibendum
               orci. Vivamus vitae dictum sapien, eget pharetra eros.
-            </p>
+            </p> */}
           </div>
         </article>
         <section className="w-[295px] h-fit col-span-12 lg:col-span-4">
@@ -77,17 +90,39 @@ const Post: NextPageWithLayout = () => {
 
 export default Post;
 
-export async function getStaticPaths() {
-  const paths: any = [];
+const GET_POST = gql`
+  query getPost($uri: ID!) {
+    post(id: $uri, idType: URI) {
+      title
+      ...BlocksField
+    }
+  }
+  ${BLOCKS_FIELD}
+`;
+
+export function getStaticPaths() {
   return {
-    paths,
-    fallback: true,
+    paths: [],
+    fallback: "blocking",
   };
 }
 
 export async function getStaticProps({ params }: any) {
+  // const uri = params.uri;
+  const uri = params.uri.join("/");
+
+  const res = await client.query({
+    query: GET_POST,
+    variables: { uri },
+  });
+
+  const post = res?.data?.post;
+  if (!post) {
+    return { notFound: true };
+  }
   return {
-    props: {},
+    props: { post },
+    revalidate: 120,
   };
 }
 

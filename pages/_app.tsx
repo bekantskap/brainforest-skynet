@@ -10,6 +10,8 @@ import {
 import React from "react";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
+import { ApolloProvider } from "@apollo/client";
+import client from "../lib/client";
 
 export const SubNavContext = createContext<NavContextType | null>(null);
 export const SiteContext = createContext<any>(null);
@@ -35,9 +37,11 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const getLayout = Component.getLayout ?? ((page) => page);
 
   return (
-    <SiteContext.Provider value={providerValue}>
-      {getLayout(<Component {...pageProps} />)}
-    </SiteContext.Provider>
+    <ApolloProvider client={client}>
+      <SiteContext.Provider value={providerValue}>
+        {getLayout(<Component {...pageProps} />)}
+      </SiteContext.Provider>
+    </ApolloProvider>
   );
 }
 

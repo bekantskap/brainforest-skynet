@@ -1,4 +1,18 @@
+import { gql } from "@apollo/client";
 import parseHtml from "../../lib/parser";
+
+export const PARAGRAPH_BLOCK_ATTRIBUTES = gql`
+  fragment ParagraphBlockAttributes on CoreParagraphBlockAttributes {
+    align
+    anchor
+    backgroundColor
+    className
+    content
+    dropCap
+    style
+    textColor
+  }
+`;
 
 function getClassName(align) {
   if (align === "center" || align === "right") {

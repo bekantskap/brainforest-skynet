@@ -1,4 +1,19 @@
+import { gql } from "@apollo/client";
 import React from "react";
+
+export const HEADING_BLOCK_ATTRIBUTES = gql`
+  fragment HeadingBlockAttributes on CoreHeadingBlockAttributes {
+    align
+    anchor
+    backgroundColor
+    className
+    content
+    level
+    style
+    textAlign
+    textColor
+  }
+`;
 
 function getClassName(align) {
   if (align === "center" || align === "right") {
@@ -18,7 +33,7 @@ export default function HeadingBlock({
   level,
 }) {
   const tag = `h${level}`;
-
+  console.log(align);
   return React.createElement(
     tag,
     {

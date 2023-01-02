@@ -1,11 +1,42 @@
-import Link from "next/link";
-import HeadingBlock from "../components/blocks/HeadingBlock";
-import ParagraphBlock from "../components/blocks/ParagraphBlock";
+import HeadingBlock, {
+  HEADING_BLOCK_ATTRIBUTES,
+} from "../components/blocks/HeadingBlock";
+import ParagraphBlock, {
+  PARAGRAPH_BLOCK_ATTRIBUTES,
+} from "../components/blocks/ParagraphBlock";
 import ImageBlock from "../components/blocks/ImageBlock";
-import CustomBlock from "../components/blocks/CustomBlock";
+import { gql } from "@apollo/client";
+import FreeFormBlock, {
+  FREEFORM_BLOCK_ATTRIBUTES,
+} from "./blocks/FreeFormBlock";
+
+export const BLOCKS_FIELD = gql`
+  fragment BlocksField on Post {
+    blocks {
+      name
+      ... on CoreHeadingBlock {
+        attributes {
+          ... on CoreHeadingBlockAttributes {
+            ...HeadingBlockAttributes
+          }
+        }
+      }
+      ... on CoreParagraphBlock {
+        attributes {
+          ... on CoreParagraphBlockAttributes {
+            ...ParagraphBlockAttributes
+          }
+        }
+      }
+    }
+  }
+  ${HEADING_BLOCK_ATTRIBUTES}
+  ${PARAGRAPH_BLOCK_ATTRIBUTES}
+`;
 
 export default function Block({ block }) {
   const { attributes, name, innerBlocks } = block;
+  console.log(block);
 
   switch (name) {
     // TODO: Add support for these commented-out blocks.
@@ -30,6 +61,8 @@ export default function Block({ block }) {
     //   return <CoverBlock media={attributes} innerBlocks={innerBlocks} key={index} />
     case "core/heading":
       return <HeadingBlock {...attributes} />;
+    case "core/freeform":
+      return <FreeFormBlock {...attributes} innerBlocks={innerBlocks} />;
     case "core/image":
       return <ImageBlock {...attributes} />;
     // case 'core/gallery':
