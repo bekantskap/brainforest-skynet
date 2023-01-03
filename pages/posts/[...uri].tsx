@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { ReactElement } from "react";
 import Block, { BLOCKS_FIELD } from "../../components/Block";
 import Layout from "../../layouts/Layout";
-import client from "../../lib/client";
+import client from "../../utils/client";
 import { NextPageWithLayout } from "../_app";
 
 const Post: NextPageWithLayout = ({ post }: any) => {

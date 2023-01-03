@@ -7,10 +7,11 @@ import Events from "../components/Events";
 import Stats from "../components/Stats";
 import Layout from "../layouts/Layout";
 import type { NextPageWithLayout } from "./_app";
-import client from "../lib/client";
+import client from "../utils/client";
 import { gql } from "@apollo/client";
+import { getPageStaticProps } from "../utils/getPageStaticProps";
 
-const Dashboard: NextPageWithLayout = ({ posts }: any) => {
+const Dashboard: NextPageWithLayout = ({ posts, menuItems }: any) => {
   console.log(posts);
 
   return (
@@ -38,27 +39,33 @@ Dashboard.getLayout = function getLayout(page: ReactElement) {
 
 export default Dashboard;
 
-const GET_POSTS = gql`
-  query NewQuery {
-    posts(first: 4, after: null) {
-      nodes {
-        databaseId
-        uri
-        title
-        date
-      }
-    }
-  }
-`;
+export const getStaticProps = getPageStaticProps;
 
-export async function getStaticProps() {
-  const res = await client.query({
-    query: GET_POSTS,
-  });
+// export async function getStaticProps() {
+//   const res = await client.query({
+//     query: gql`
+//       query PageQuery {
+//         posts(first: 4, after: null) {
+//           nodes {
+//             databaseId
+//             uri
+//             title
+//             date
+//           }
+//         }
+//         menuItems {
+//           nodes {
+//             label
+//           }
+//         }
+//       }
+//     `,
+//   });
 
-  return {
-    props: {
-      posts: res.data.posts.nodes,
-    },
-  };
-}
+//   return {
+//     props: {
+//       posts: res.data.posts.nodes,
+//       navMenu: res.data.menuItems.nodes,
+//     },
+//   };
+// }

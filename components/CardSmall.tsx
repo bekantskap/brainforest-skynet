@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { dateCleaner } from "../lib/dateCleaner";
+import { dateCleaner } from "../utils/dateCleaner";
 
 const CardSmall = ({ posts }: any) => {
   return (

@@ -11,7 +11,7 @@ import React from "react";
 import type { ReactElement, ReactNode } from "react";
 import type { NextPage } from "next";
 import { ApolloProvider } from "@apollo/client";
-import client from "../lib/client";
+import client from "../utils/client";
 
 export const SubNavContext = createContext<NavContextType | null>(null);
 export const SiteContext = createContext<any>(null);

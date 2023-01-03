@@ -1,13 +1,18 @@
+import { gql } from "@apollo/client";
 import Link from "next/link";
 import React, { useContext, useState } from "react";
 import { AiOutlineSearch, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import client from "../utils/client";
 import { SiteContext } from "../pages/_app";
 import { NavContextType } from "../typing";
+import Block from "./Block";
 import MobileNav from "./MobileNav";
 import SubNav from "./SubNav";
+import { getPageStaticProps } from "../utils/getPageStaticProps";
 
-const Navbar = () => {
+const Navbar = ({ items, menuItems }: any) => {
   const context = useContext(SiteContext) as any;
+  console.log(menuItems);
 
   const handleSubNav = (content: string) => {
     if (context.subNav.navdir === content || content === "close") {
@@ -28,6 +33,11 @@ const Navbar = () => {
   return (
     <>
       <nav className="w-screen h-[80px] bg-primarycolor flex items-center justify-between mb-4 sm:mb-0">
+        {items
+          ? items.map((block: any, index: number) => (
+              <Block block={block} key={index} />
+            ))
+          : null}
         <section className=" hidden lg:w-[550px] relative lg:flex  justify-evenly items-center">
           <Link onClick={() => handleSubNav("close")} href="/dashboard">
             <h2 className="text-4xl font-bold">b</h2>
@@ -74,3 +84,5 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+export const getStaticProps = getPageStaticProps;

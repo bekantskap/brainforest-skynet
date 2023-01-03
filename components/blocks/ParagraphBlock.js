@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-import parseHtml from "../../lib/parser";
+import parseHtml from "../../utils/parser";
 
 export const PARAGRAPH_BLOCK_ATTRIBUTES = gql`
   fragment ParagraphBlockAttributes on CoreParagraphBlockAttributes {

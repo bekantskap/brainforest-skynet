@@ -78,6 +78,7 @@ export default function Block({ block }) {
     // case 'core/spacer':
     //   return <SpacerBlock {...attributes} key={index} />
     default:
+      console.log("UNKNOWN BLOCK: ", block);
       return null;
   }
 }
